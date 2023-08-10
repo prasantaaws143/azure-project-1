@@ -7,42 +7,49 @@ pool:
 stages:
 - stage: Build
   variables:
-    stagename: Build
+    stagename: Build_Job
     user: Prasanta
   jobs:
   - job: first_job
     steps:
     - bash: echo Build job - First job
     - bash: echo Build name is $(stagename) and username is $(user)
-  - job: second_job
-    steps:
-    - bash: echo Build job - Second job
-- stage: Dev
-  dependsOn: Build 
-  jobs:
-  - job: first_job
-    steps:
-    - bash: echo Deploy job - First job
-  - job: second_job
-    steps:
-    - bash: echo Deploy job - Second job
-- stage: QA
-  dependsOn: Build
-  jobs:
-  - job: first_job
-    steps:
-    - bash: echo Deploy job - First job
-  - job: second_job
-    steps:
-    - bash: echo Deploy job - Second job
-- stage: Prod
-  dependsOn:
-  - Dev
-  - QA
-  jobs:
-  - job: first_job
-    steps:
-    - bash: echo Deploy job - First job
-  - job: second_job
-    steps:
-    - bash: echo Deploy job - Second job            
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourcesDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+#   - job: second_job
+#     steps:
+#     - bash: echo Build job - Second job
+# - stage: Dev
+#   dependsOn: Build_Job
+#   jobs:
+#   - job: first_job
+#     steps:
+#     - bash: echo Deploy job - First job
+#   - job: second_job
+#     steps:
+#     - bash: echo Deploy job - Second job
+# - stage: QA
+#   dependsOn: Build_Job
+#   jobs:
+#   - job: first_job
+#     steps:
+#     - bash: echo Deploy job - First job
+#   - job: second_job
+#     steps:
+#     - bash: echo Deploy job - Second job
+# - stage: Prod
+#   dependsOn:
+#   - Dev
+#   - QA
+#   jobs:
+#   - job: first_job
+#     steps:
+#     - bash: echo Deploy job - First job
+#   - job: second_job
+#     steps:
+#     - bash: echo Deploy job - Second job            
