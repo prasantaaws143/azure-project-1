@@ -25,3 +25,8 @@ jobs:
   steps:
   - script: echo Job-2
     displayName: 'Run a one-line script'
+
+- job: job3
+  steps:
+  - script: echo Job-3
+    displayName: 'Run a one-line script'
