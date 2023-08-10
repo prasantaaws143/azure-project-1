@@ -21,7 +21,3 @@ stages:
   - job: second_job
     steps:
     - bash: echo Deploy job - Second job    
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
