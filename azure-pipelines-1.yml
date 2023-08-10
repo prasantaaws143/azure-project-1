@@ -6,10 +6,14 @@ pool:
 
 stages:
 - stage: Build
+  variables:
+    stagename: Build
+    user: Prasanta
   jobs:
   - job: first_job
     steps:
     - bash: echo Build job - First job
+    - bash: echo Build name is $(stagename) and username is $(user)
   - job: second_job
     steps:
     - bash: echo Build job - Second job
