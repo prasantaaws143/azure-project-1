@@ -29,5 +29,6 @@ stages:
     steps:
     - bash: echo building 1st_ProdDeploy_job
 
+steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
