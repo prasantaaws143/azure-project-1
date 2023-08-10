@@ -34,6 +34,13 @@ stages:
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
     - bash: echo $(Build.ArtifactStagingDirectory)
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+        MaxArtifactSize: 10
 #   - job: second_job
 #     steps:
 #     - bash: echo Build job - Second job
